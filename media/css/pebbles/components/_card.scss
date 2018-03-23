@@ -5,6 +5,33 @@
 @import '../includes/lib';
 
 /* -------------------------------------------------------------------------- */
+// Card specific image aspect ratios
+
+@mixin aspect-1-1-full-width {
+    @include aspect-ratio(500px, 500px);
+}
+
+@mixin aspect-1-1-half-width {
+    @include aspect-ratio(500px, 500px, 50%);
+}
+
+@mixin aspect-16-9-full-width {
+    @include aspect-ratio(1280px, 720px);
+}
+
+@mixin aspect-16-9-half-width {
+    @include aspect-ratio(1280px, 720px, 50%);
+}
+
+@mixin aspect-3-2-full-width {
+    @include aspect-ratio(1200px, 800px);
+}
+
+@mixin aspect-3-2-half-width {
+    @include aspect-ratio(1200px, 800px, 50%);
+}
+
+/* -------------------------------------------------------------------------- */
 // Base card class
 
 .card {
@@ -31,11 +58,24 @@
             right: 0;
             top: 0;
         }
+
+        // Preserve aspect ratio of images and avoid content jump when loading.
+        &.has-aspect-1-1 {
+            @include aspect-1-1-full-width;
+        }
+
+        &.has-aspect-16-9 {
+            @include aspect-16-9-full-width;
+        }
+
+        &.has-aspect-3-2 {
+            @include aspect-3-2-full-width;
+        }
     }
 
     .card-image {
-        display: block;
         width: 100%;
+        display: block;
         max-width: none;
     }
 
@@ -54,6 +94,7 @@
         &.card-tag-audio,
         &.card-tag-video {
             line-height: 1.8;
+            min-height: 25px;
             padding-left: 30px;
         }
 
@@ -186,6 +227,18 @@
         .card-image-wrapper {
             float: left;
             width: 50%;
+
+            &.has-aspect-1-1 {
+                @include aspect-1-1-half-width;
+            }
+
+            &.has-aspect-16-9 {
+                @include aspect-16-9-half-width;
+            }
+
+            &.has-aspect-3-2 {
+                @include aspect-3-2-half-width;
+            }
         }
 
         .card-content {
@@ -201,6 +254,20 @@
             .card-content {
                 float: none;
                 width: auto;
+            }
+
+            .card-image-wrapper {
+                &.has-aspect-1-1 {
+                    @include aspect-1-1-full-width;
+                }
+
+                &.has-aspect-16-9 {
+                    @include aspect-16-9-full-width;
+                }
+
+                &.has-aspect-3-2 {
+                    @include aspect-3-2-full-width;
+                }
             }
 
             .card-content {

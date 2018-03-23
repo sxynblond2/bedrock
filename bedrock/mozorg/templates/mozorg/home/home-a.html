@@ -49,10 +49,10 @@
   {% endif %}
 {% endblock %}
 
-{% macro card_block(class, tag_label, tag_class, title, desc, image_url, link_url, small_cta, meta) -%}
+{% macro card_block(class, tag_label, tag_class, title, desc, image_url, image_class, link_url, small_cta, meta) -%}
 <section class="card {% if class %}{{ class }}{% endif %}">
   <a class="card-block-link" href="{{ link_url }}">
-    <div class="card-image-wrapper">
+    <div class="card-image-wrapper {% if image_class %}{{ image_class }}{% endif %}">
       <img class="card-image" src="{{ static(image_url) }}" alt="">
     </div>
     <div class="card-content">
@@ -95,6 +95,7 @@
             title=_('The browser made for people, not profit'),
             desc=_('So we don’t have organic heirloom tomatoes inside our code. We *are* the only major browser backed by a non-profit, though, and that matters.'),
             image_url='img/home/2018/value-fresh.png',
+            image_class='has-aspect-16-9',
             link_url='#'
         )}}
         <div class="layout-card-half">
@@ -105,6 +106,7 @@
               title=_('Algorisky'),
               desc=_('From Google search to Facebook news, algorithms shape our online exp…'),
               image_url='img/home/2018/irl-algorisky.png',
+              image_class='has-aspect-1-1',
               link_url='https://irlpodcast.org/episode12/'
           )}}
 
@@ -115,6 +117,7 @@
               title=_('Bot or Not'),
               desc=_('You’ve heard about how fast the new Firefox is. You’ve heard it’s made by…'),
               image_url='img/home/2018/irl-bot-or-not.png',
+              image_class='has-aspect-1-1',
               link_url='https://irlpodcast.org/episode8/'
           )}}
         </div>
@@ -127,6 +130,7 @@
           title=_('More power to you.'),
           desc=_('We’re the not-for-profit behind products, technologies and programs that make the internet healthier for everyone.'),
           image_url='img/home/2018/splodge.png',
+          image_class='has-aspect-3-2',
           small_cta=_('Learn more about us'),
           link_url='#'
       )}}
@@ -136,6 +140,7 @@
           title=_('A Perspective: Firefox Quantum’s Tracking Protection Gives Users The Right To Be Curious'),
           desc=_('In the physical world, we don’t wear our ID on our foreheads. This is conven…'),
           image_url='img/home/2018/quantum-tracking-protection.png',
+          image_class='has-aspect-3-2',
           link_url='https://blog.mozilla.org/blog/2018/02/14/a-perspective-firefox-quantum-tracking-protection-gives-users-the-right-to-be-curious/'
       )}}
 
@@ -144,6 +149,7 @@
           title=_('Switch from Chrome to Firefox in just a Few Minutes '),
           desc=_('You’ve heard about how fast the new Firefox is. You’ve heard it’s made by ...'),
           image_url='img/home/2018/switch-to-firefox.png',
+          image_class='has-aspect-3-2',
           link_url='https://blog.mozilla.org/firefox/switch-chrome-firefox-just-minutes/'
       )}}
     </div>
@@ -174,6 +180,7 @@
           title=_('What Facial Recognition Gets Wrong'),
           desc=_('Scientists teach computers facial recognition by giving them a dataset of thousands of faces to process…'),
           image_url='img/home/2018/irl-facial-recognition.png',
+          image_class='has-aspect-1-1',
           link_url='#'
       )}}
 
@@ -183,6 +190,7 @@
           title=_('Everything you need to know about privacy may just be on Reality TV'),
           desc=_('It’s no secret that popular culture, mass media and television influence all kinds of values and cultural norms. Nowhere ...'),
           image_url='img/home/2018/privacy-reality-tv.png',
+          image_class='has-aspect-16-9',
           link_url='https://blog.mozilla.org/firefox/everything-need-know-privacy-may-just-reality-tv/'
       )}}
     </div>
@@ -193,6 +201,7 @@
           title=_('Mozilla v FCC: Mozilla Re-files Suit Against FCC to Protect Net Neutrality'),
           desc=_('This morning, the Federal Communications Commission…'),
           image_url='img/home/2018/save-the-internet.png',
+          image_class='has-aspect-3-2',
           link_url='https://blog.mozilla.org/blog/2018/02/22/mozilla-v-fcc-mozilla-re-files-suit-fcc-protect-net-neutrality/'
       )}}
 
@@ -201,6 +210,7 @@
           title=_('Open source. <br>Open minds.'),
           desc=_('Mozilla creates powerful web tech for everyone.'),
           image_url='img/home/2018/splodge.png',
+          image_class='has-aspect-3-2',
           small_cta=_('Explore Mozilla Technology'),
           link_url='#'
       )}}
@@ -210,6 +220,7 @@
           title=_('An Open Letter to Justice Srikrishna About Data Privacy and Aadhaar'),
           desc=_('Dear Justice Srikrishna and the Honourable Members of the Ministry…'),
           image_url='img/home/2018/open-letter.png',
+          image_class='has-aspect-3-2',
           link_url='https://blog.mozilla.org/blog/2018/02/09/open-letter-justice-srikrishna-data-privacy-aadhaar/'
       )}}
     </div>
@@ -225,6 +236,7 @@
             tag_label=_('nytimes.com'),
             title=_('Why We May Soon Be Living in Alexa’s World'),
             image_url='img/home/2018/pocket1.png',
+            image_class='has-aspect-16-9',
             link_url='#',
             meta=_('2 hours ago')
         )}}
@@ -234,6 +246,7 @@
             tag_label=_('dazeddigital.com'),
             title=_('How disabled people find a lifeline in the online world'),
             image_url='img/home/2018/pocket2.png',
+            image_class='has-aspect-16-9',
             link_url='#',
             meta=_('18 hours ago')
         )}}
@@ -243,6 +256,7 @@
             tag_label=_('theatlantic.com'),
             title=_('Airbnb and the Unintended Consquences of ‘Disr …'),
             image_url='img/home/2018/pocket3.png',
+            image_class='has-aspect-16-9',
             link_url='#',
             meta=_('6 days ago')
         )}}
@@ -252,6 +266,7 @@
             tag_label=_('nytimes.com'),
             title=_('Google Chrome Now Blocks Irksome Ads. That’s a Good Thing …'),
             image_url='img/home/2018/pocket4.png',
+            image_class='has-aspect-16-9',
             link_url='#',
             meta=_('7 days ago')
         )}}
@@ -275,6 +290,7 @@
           title=_('Cloak of Invisibility'),
           desc=_('On the Internet no one knows you’re a dog, as the old joke goes. But does…'),
           image_url='img/home/2018/irl-invisibility.png',
+          image_class='has-aspect-1-1',
           link_url='https://irlpodcast.org/episode11/'
       )}}
 
@@ -283,6 +299,7 @@
           title=_('*privacy not included'),
           desc=_('A Guide to Make Shopping for Connected Gifts Safer, Easier…'),
           image_url='img/home/2018/privacy-not-included.png',
+          image_class='has-aspect-3-2',
           link_url='https://advocacy.mozilla.org/en-US/privacynotincluded'
       )}}
     </div>
