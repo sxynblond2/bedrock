@@ -5,7 +5,6 @@
 @import '../pebbles/includes/lib';
 @import '../pebbles/components/newsletter';
 @import '../hubs/sections';
-@import '../hubs/buttons';
 @import '../hubs/masthead';
 
 $addendum-blue: #16AABF;
@@ -54,10 +53,12 @@ Manifesto
     color: $color-text-primary;
     font-weight: bold;
     text-decoration: none;
+    display: inline-block;
 
     &:after {
         @include background-size(14px, 24px);
         background: url('/media/img/mozorg/about/manifesto/cta-arrow.svg') 0 0 no-repeat;
+        background-size: 14px auto;
         content: '';
         display: inline-block;
         height: 12px;
@@ -67,6 +68,12 @@ Manifesto
         transition: right 100ms ease-in-out;
         width: 14px;
         background-size: 14px auto;
+
+        html[dir="rtl"] & {
+            margin-left: 0;
+            margin-right: 10px;
+            transform: rotate(180deg);
+        }
     }
 
     &:link,
@@ -77,12 +84,25 @@ Manifesto
     &:hover,
     &:focus,
     &:active {
+        color: $color-link-hover;
         text-decoration: underline;
 
         &:after {
-            background-position: 0 -12px;
+            background-position: 0 -13px;
             right: -4px;
+
+            html[dir="rtl"] & {
+                right: 4px;
+            }
         }
+    }
+
+    @media #{$mq-tablet} {
+        margin-bottom: $tablet-content-padding;
+    }
+
+    @media #{$mq-desktop-wide} {
+        margin-bottom: $desktop-content-padding;
     }
 }
 
@@ -137,6 +157,10 @@ Addendum
             margin-left: $desktop-content-padding;
             margin-right: $desktop-content-padding;
             width: calc(50% - #{$desktop-content-padding * 1.5});
+
+            html[dir="rtl"] {
+                float: right;
+            }
         }
 
         &:nth-child(odd) {
@@ -168,7 +192,7 @@ Addendum
 Share section
 ====================================================================== */
 
-.addendum-share {
+.share-addendum {
     @include open-sans;
     background-color: #b9e5ec;
     padding: ($mobile-content-padding * 2) 0;
@@ -205,6 +229,11 @@ a.button.button-manifesto {
     position: relative;
     padding-left: 25px + 25px + 15px; // left padding + icon width + right padding
 
+    html[dir="rtl"] & {
+        padding-left: 40px;
+        padding-right: 25px + 25px + 15px; // left padding + icon width + right padding
+    }
+
     &:hover,
     &:focus,
     &:active {
@@ -223,6 +252,11 @@ a.button.button-manifesto {
         position: absolute;
         top: 1.1em;
         width: 25px;
+
+        html[dir="rtl"] & {
+            left: auto;
+            right: 25px;
+        }
     }
 }
 
@@ -295,6 +329,10 @@ Principles
     @media #{$mq-tablet} {
         @include span(7);
         padding: 0;
+
+        html[dir="rtl"] & {
+            float: right;
+        }
     }
 }
 
@@ -308,6 +346,12 @@ Principles
         margin-top: 0;
         padding: 0;
         padding-left: $tablet-content-padding;
+
+        html[dir="rtl"] & {
+            float: right;
+            padding-left: 0;
+            padding-right: $tablet-content-padding;
+        }
     }
 
     @media #{$mq-desktop} {
