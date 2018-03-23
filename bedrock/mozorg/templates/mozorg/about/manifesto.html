@@ -60,8 +60,8 @@
   'custom': '1iRxjCi',
 } %}
 
-{% macro twitter_link(content_id, text, hashtag = '#mozmanifesto') -%}
-  {{ twitter_share_url('http://mzl.la/' + twitter_share_shorten_url[content_id], text|truncate(102, False, '…') + ' ' + hashtag) }}
+{% macro twitter_link(content_id, text) -%}
+  {{ twitter_share_url('http://mzl.la/' + twitter_share_shorten_url[content_id], text|truncate(102, False, '…')) }}
 {%- endmacro %}
 
 {% if l10n_has_tag('addendum_032018') %}

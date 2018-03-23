@@ -55,6 +55,20 @@ Manifesto
     font-weight: bold;
     text-decoration: none;
 
+    &:after {
+        @include background-size(14px, 24px);
+        background: url('/media/img/mozorg/about/manifesto/cta-arrow.svg') 0 0 no-repeat;
+        content: '';
+        display: inline-block;
+        height: 12px;
+        margin-left: 10px;
+        position: relative;
+        right: 0;
+        transition: right 100ms ease-in-out;
+        width: 14px;
+        background-size: 14px auto;
+    }
+
     &:link,
     &:visited {
         color: $color-text-primary;
@@ -64,6 +78,11 @@ Manifesto
     &:focus,
     &:active {
         text-decoration: underline;
+
+        &:after {
+            background-position: 0 -12px;
+            right: -4px;
+        }
     }
 }
 
@@ -92,11 +111,12 @@ Addendum
 .addendum-list {
     @include clearfix;
     @include font-size-level3;
-    margin: 2em ($mobile-content-padding * 2);
+    margin: 2em ($mobile-content-padding * 2) 0;
 
     @media #{$mq-tablet} {
         margin-left: ($tablet-content-padding * 2);
         margin-right: ($tablet-content-padding * 2);
+        margin-bottom: 2em;
     }
 
     @media #{$mq-desktop-wide} {
@@ -151,14 +171,17 @@ Share section
 .addendum-share {
     @include open-sans;
     background-color: #b9e5ec;
-    padding: $mobile-content-padding 0;
+    padding: ($mobile-content-padding * 2) 0;
+    margin-bottom: $mobile-content-padding * 2;
 
     @media #{$mq-tablet} {
         padding: $tablet-content-padding 0;
+        margin-bottom: 20px;
     }
 
     @media #{$mq-desktop} {
         padding: $desktop-content-padding 0;
+        margin-bottom: 55px;
     }
 }
 
@@ -177,14 +200,29 @@ Share section
 }
 
 a.button.button-manifesto {
-    border-color: $addendum-blue;
     background-color: $addendum-blue;
+    border-color: $addendum-blue;
+    position: relative;
+    padding-left: 25px + 25px + 15px; // left padding + icon width + right padding
 
     &:hover,
     &:focus,
     &:active {
         border-color: darken(#149bae, 2%);
         background-color: darken(#149bae, 2%);
+    }
+
+    &:before {
+        background-image: url('/media/img/logos/social/social-icon-sprite.svg');
+        background-position: 0 0;
+        background-size: cover;
+        content: '';
+        display: inline-block;
+        height: 20px;
+        left: 25px;
+        position: absolute;
+        top: 1.1em;
+        width: 25px;
     }
 }
 
@@ -194,10 +232,10 @@ Principles
 ====================================================================== */
 
 .principles-header {
-    margin-bottom: 1.5em;
     padding-top: $mobile-content-padding;
 
     @media #{$mq-tablet} {
+        margin-bottom: 1.5em;
         padding-top: $tablet-content-padding;
     }
 
